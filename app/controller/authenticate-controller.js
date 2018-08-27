@@ -3,6 +3,8 @@ const User = db.users;
 
 const bcrypt = require('bcrypt');
 
+var jwt=require('jsonwebtoken');
+
 module.exports.authenticate=function(req,res){
     
     var email=req.body.email;
@@ -16,12 +18,17 @@ module.exports.authenticate=function(req,res){
             if(user){
 
                 bcrypt.compare(password, user.password, function(err, result) {
+                    
                     if(result) {
                         // Passwords match
+                        var token=jwt.sign(user.toJSON(),process.env.SECRET_KEY,{
+                            expiresIn:5000
+                        });
                         res.json({
                             status:true,
+                            token:token,
                             message:'successfully authenticated'
-                        });
+                        })
     
                     } else {
                         // Passwords don't match
