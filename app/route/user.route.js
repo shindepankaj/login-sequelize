@@ -1,18 +1,20 @@
 module.exports = function(app) {
  
-    const users = require('../controller/register.controller.js');
-    const authenticates = require('../controller/authenticate-controller.js');
+    const registerController = require('../controller/register.controller.js');
+    const authenticationController = require('../controller/authenticate-controller.js');
     const dashboard = require('../controller/dashboard.controller.js');
  
-    // Create a new Customer
-    app.post('/api/register', users.create);
+    // Register User
+    app.post('/api/register', registerController.create);
 
-    // Create a new Customer
-    app.post('/api/authenticate', authenticates.authenticate);
+    // Authenticate User
+    app.post('/api/authenticate', authenticationController.authenticate);
  
-    // Create a new Customer
-    app.post('/secure-api/home', dashboard.home);
+    // Fetch all users
+    app.post('/secure-api/fetchAllUsers', dashboard.fetchAllUsers);
  
+    // Disable User
+    app.post('/secure-api/disableUser', registerController.disableUser);
 
     // // Retrieve all Customer
     // app.get('/api/customers', customers.findAll);

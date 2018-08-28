@@ -3,7 +3,7 @@ const User = db.users;
 
 const bcrypt = require('bcrypt');
 
-// Post a Customer
+// Add User
 exports.create = (req, res) => {	
 
 	console.log("----", req.body);
@@ -36,6 +36,27 @@ exports.create = (req, res) => {
 
 };
 
+// Disable User
+exports.disableUser = (req, res) => {
+	// User.findAll().then(customers => {
+	//   // Send all customers to Client
+	//   res.send(customers);
+	// });
+
+	// User.findOne({ where: {email: req.body.email} }).then(user => {
+	// });
+
+
+	User.findOne().then(user => {
+
+		console.log('---- ', user);
+
+
+
+		res.send(user);
+
+	});
+};
 
 
 // // FETCH all Customers
