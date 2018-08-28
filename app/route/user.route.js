@@ -2,6 +2,7 @@ module.exports = function(app) {
  
     const users = require('../controller/register.controller.js');
     const authenticates = require('../controller/authenticate-controller.js');
+    const dashboard = require('../controller/dashboard.controller.js');
  
     // Create a new Customer
     app.post('/api/register', users.create);
@@ -9,6 +10,10 @@ module.exports = function(app) {
     // Create a new Customer
     app.post('/api/authenticate', authenticates.authenticate);
  
+    // Create a new Customer
+    app.post('/secure-api/home', dashboard.home);
+ 
+
     // // Retrieve all Customer
     // app.get('/api/customers', customers.findAll);
  

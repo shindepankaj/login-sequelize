@@ -35,9 +35,9 @@ router.use(function(req,res,next){
     }
 })
 
-router.post('/home',function(req,res){
-    res.send('Token Verified - ' + req.headers['token'])
-})
+// router.post('/home',function(req,res){
+//     res.send('Token Verified - ' + req.headers['token'])
+// })
 
 
 
